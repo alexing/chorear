@@ -28,6 +28,7 @@ This repository provides a simple setup script to install [Zotify](https://githu
    chorear https://open.spotify.com/track/<playlist-id>
    ```
    etc.
+   
    The songs will be downloaded directly into your current directory with unique filenames in this format:
 
    ```
