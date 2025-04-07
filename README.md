@@ -53,6 +53,7 @@ zotify <link> \
   --output "{artist}-{song_name}.{ext}"
 ```
 Check [zofify's documentation](https://github.com/zotify-dev/zotify) if you want to play with this parameters.
+
 ---
 
 ## 🎧 First-Time Use: Spotify Login
