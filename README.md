@@ -29,11 +29,7 @@ This repository provides a simple setup script to install [Zotify](https://githu
    ```
    etc.
    
-   The songs will be downloaded directly into your current directory with unique filenames in this format:
-
-   ```
-   Artist Name-Song Title.mp3
-   ```
+   The songs will be downloaded directly into your current directory with unique filenames in this format: `Artist Name-Song Title.mp3`
 
 ---
 
