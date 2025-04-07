@@ -31,7 +31,7 @@ This repository provides a simple setup script to install [Zotify](https://githu
    The songs will be downloaded directly into your current directory with unique filenames in this format:
 
    ```
-   Artist Name - Song Title [spotifyTrackID].mp3
+   Artist Name-Song Title.mp3
    ```
 
 ---
