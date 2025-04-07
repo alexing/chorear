@@ -7,8 +7,8 @@ This repository provides a simple setup script to install [Zotify](https://githu
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/chorear-setup.git
-   cd chorear-setup
+   git clone https://github.com/yourusername/chorear.git
+   cd chorear
    ```
 
 2. **Run the Setup Script:**
@@ -23,7 +23,11 @@ This repository provides a simple setup script to install [Zotify](https://githu
    ```bash
    chorear https://open.spotify.com/track/<track-id>
    ```
-
+   or
+   ```bash
+   chorear https://open.spotify.com/track/<playlist-id>
+   ```
+   etc.
    The songs will be downloaded directly into your current directory with unique filenames in this format:
 
    ```
@@ -46,9 +50,9 @@ zotify <link> \
   --download-format mp3 \
   --download-quality very_high \
   --print-downloads=True \
-  --output "{artist} - {song_name} [{id}].{ext}"
+  --output "{artist}-{song_name}.{ext}"
 ```
-
+Check [zofify's documentation](https://github.com/zotify-dev/zotify) if you want to play with this parameters.
 ---
 
 ## 🎧 First-Time Use: Spotify Login
