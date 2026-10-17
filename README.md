@@ -45,14 +45,14 @@ zotify <link> \
   --root-path . \
   --md-allgenres=True \
   --download-format mp3 \
-  --download-quality auto \
+  --download-quality very_high \
   --lyrics-to-file=False \
   --print-downloads=True \
   --output "{artist}-{song_name}"
 ```
 Check [Zotify's documentation](https://github.com/Googolplexed0/zotify) if you want to play with these parameters.
 
-`auto` quality downloads at 320 kbps with Spotify Premium and 160 kbps with a free account.
+`very_high` downloads at 320 kbps with Spotify Premium; on a free account Zotify automatically falls back to 160 kbps.
 
 ## 🔄 Updating Zotify
 

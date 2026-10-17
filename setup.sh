@@ -22,7 +22,7 @@ echo "📂 Creating /usr/local/bin/chorear script..."
 sudo mkdir -p /usr/local/bin
 sudo tee /usr/local/bin/chorear > /dev/null << 'EOF'
 #!/bin/bash
-exec "$HOME/.local/bin/zotify" "$@" --output "{artist}-{song_name}" --root-path . --md-allgenres=True --download-format mp3 --download-quality auto --lyrics-to-file=False --print-downloads=True
+exec "$HOME/.local/bin/zotify" "$@" --output "{artist}-{song_name}" --root-path . --md-allgenres=True --download-format mp3 --download-quality very_high --lyrics-to-file=False --print-downloads=True
 EOF
 
 sudo chmod +x /usr/local/bin/chorear
