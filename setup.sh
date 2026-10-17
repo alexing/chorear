@@ -17,11 +17,7 @@ pipx install --force git+https://github.com/Googolplexed0/zotify.git
 echo "📂 Creating /usr/local/bin/chorear script..."
 sudo tee /usr/local/bin/chorear > /dev/null << 'EOF'
 #!/bin/bash
-zotify "$@" --output "{artist}-{song_name}.{ext}" --root-path . --md-allgenres=True --download-format mp3 --download-quality very_high --print-downloads=True
-status=$?
-# Zotify leaves an empty zotify_*.log in the download folder unless debug is on
-find . -maxdepth 1 -name 'zotify_*.log' -empty -delete
-exit $status
+exec zotify "$@" --output "{artist}-{song_name}" --root-path . --md-allgenres=True --download-format mp3 --download-quality very_high --lyrics-to-file=False --print-downloads=True
 EOF
 
 sudo chmod +x /usr/local/bin/chorear

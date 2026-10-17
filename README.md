@@ -46,8 +46,9 @@ zotify <link> \
   --md-allgenres=True \
   --download-format mp3 \
   --download-quality very_high \
+  --lyrics-to-file=False \
   --print-downloads=True \
-  --output "{artist}-{song_name}.{ext}"
+  --output "{artist}-{song_name}"
 ```
 Check [zofify's documentation](https://github.com/Googolplexed0/zotify) if you want to play with this parameters.
 
