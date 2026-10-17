@@ -3,8 +3,12 @@
 set -e  # Exit on error
 
 echo "🔧 Installing prerequisites..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install python@3.11 pipx ffmpeg git
+if ! command -v brew >/dev/null 2>&1; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Make brew available in this shell (Apple Silicon or Intel)
+  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
+fi
+brew install pipx ffmpeg git
 
 echo "🔧 Setting up pipx..."
 pipx ensurepath
@@ -15,9 +19,10 @@ echo "🔧 Installing Zotify..."
 pipx install --force git+https://github.com/Googolplexed0/zotify.git
 
 echo "📂 Creating /usr/local/bin/chorear script..."
+sudo mkdir -p /usr/local/bin
 sudo tee /usr/local/bin/chorear > /dev/null << 'EOF'
 #!/bin/bash
-exec zotify "$@" --output "{artist}-{song_name}" --root-path . --md-allgenres=True --download-format mp3 --download-quality very_high --lyrics-to-file=False --print-downloads=True
+exec "$HOME/.local/bin/zotify" "$@" --output "{artist}-{song_name}" --root-path . --md-allgenres=True --download-format mp3 --download-quality auto --lyrics-to-file=False --print-downloads=True
 EOF
 
 sudo chmod +x /usr/local/bin/chorear

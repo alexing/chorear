@@ -25,7 +25,7 @@ This repository provides a simple setup script to install [Zotify](https://githu
    ```
    or
    ```bash
-   chorear https://open.spotify.com/track/<playlist-id>
+   chorear https://open.spotify.com/playlist/<playlist-id>
    ```
    etc.
    
@@ -36,7 +36,7 @@ This repository provides a simple setup script to install [Zotify](https://githu
 ## 🔧 What's Included
 
 - Installs Homebrew (if not already installed)
-- Installs Python 3.11, pipx, ffmpeg, and git
+- Installs pipx, ffmpeg, and git
 - Installs the latest Zotify from the [Googolplexed0 fork](https://github.com/Googolplexed0/zotify) via pipx
 - Creates a system-wide command `chorear` with the following flags:
 
@@ -45,12 +45,14 @@ zotify <link> \
   --root-path . \
   --md-allgenres=True \
   --download-format mp3 \
-  --download-quality very_high \
+  --download-quality auto \
   --lyrics-to-file=False \
   --print-downloads=True \
   --output "{artist}-{song_name}"
 ```
-Check [zofify's documentation](https://github.com/Googolplexed0/zotify) if you want to play with this parameters.
+Check [Zotify's documentation](https://github.com/Googolplexed0/zotify) if you want to play with these parameters.
+
+`auto` quality downloads at 320 kbps with Spotify Premium and 160 kbps with a free account.
 
 ## 🔄 Updating Zotify
 
@@ -66,15 +68,9 @@ Don't run `pipx` with `sudo` — it makes `~/.local` owned by root and later upd
 
 ## 🎧 First-Time Use: Spotify Login
 
-The first time you use `chorear`, it will open your browser to authenticate with Spotify. This creates a token locally at `~/.cache-zotify` so you won’t have to log in again.
+The first time you use `chorear`, it prints a Spotify login link. Open it in your browser and log in; the credentials are saved in `~/Library/Application Support/Zotify` so you won't have to log in again.
 
-If you prefer to use your own Spotify Developer credentials, you can set these environment variables in your shell config:
-
-```bash
-export SPOTIPY_CLIENT_ID='your_client_id'
-export SPOTIPY_CLIENT_SECRET='your_client_secret'
-export SPOTIPY_REDIRECT_URI='http://localhost:8888/callback'
-```
+Downloading by link works out of the box. Searching (`chorear -s "song name"`) and downloading your Liked Songs need your own [Spotify Developer App](https://developer.spotify.com/dashboard) — pass its Client ID once with `chorear --client-id <your_client_id> ...`.
 
 ---
 
@@ -82,8 +78,7 @@ export SPOTIPY_REDIRECT_URI='http://localhost:8888/callback'
 
 - macOS
 - Admin privileges (for installing packages and creating global commands)
-- Python & pipx
-- Spotify account
+- Spotify account (Premium for 320 kbps)
 
 ---
 
