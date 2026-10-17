@@ -1,13 +1,13 @@
 # chorear
 
-This repository provides a simple setup script to install [Zotify](https://github.com/zotify-dev/zotify) and create a convenient global command `chorear` to download Spotify tracks on macOS — with your preferred flags already configured.
+This repository provides a simple setup script to install [Zotify](https://github.com/Googolplexed0/zotify) (the actively maintained fork) and create a convenient global command `chorear` to download Spotify tracks on macOS — with your preferred flags already configured.
 
 ## 🚀 Setup Instructions
 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/chorear.git
+   git clone https://github.com/alexing/chorear.git
    cd chorear
    ```
 
@@ -37,7 +37,7 @@ This repository provides a simple setup script to install [Zotify](https://githu
 
 - Installs Homebrew (if not already installed)
 - Installs Python 3.11, pipx, ffmpeg, and git
-- Installs the latest Zotify from GitHub via pipx
+- Installs the latest Zotify from the [Googolplexed0 fork](https://github.com/Googolplexed0/zotify) via pipx
 - Creates a system-wide command `chorear` with the following flags:
 
 ```bash
@@ -49,7 +49,17 @@ zotify <link> \
   --print-downloads=True \
   --output "{artist}-{song_name}.{ext}"
 ```
-Check [zofify's documentation](https://github.com/zotify-dev/zotify) if you want to play with this parameters.
+Check [zofify's documentation](https://github.com/Googolplexed0/zotify) if you want to play with this parameters.
+
+## 🔄 Updating Zotify
+
+When Spotify breaks things again, update to the latest version of the fork:
+
+```bash
+pipx install --force git+https://github.com/Googolplexed0/zotify.git
+```
+
+Don't run `pipx` with `sudo` — it makes `~/.local` owned by root and later updates fail with `Permission denied`.
 
 ---
 

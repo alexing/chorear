@@ -10,12 +10,18 @@ echo "🔧 Setting up pipx..."
 pipx ensurepath
 
 echo "🔧 Installing Zotify..."
-pipx install git+https://github.com/zotify-dev/zotify
+# Actively maintained Zotify fork (the original zotify-dev/zotify broke with Spotify API changes).
+# Do not run pipx with sudo: it makes ~/.local owned by root and later updates fail.
+pipx install --force git+https://github.com/Googolplexed0/zotify.git
 
 echo "📂 Creating /usr/local/bin/chorear script..."
 sudo tee /usr/local/bin/chorear > /dev/null << 'EOF'
 #!/bin/bash
-exec zotify "$1" --output "{artist}-{song_name}.{ext}" --root-path . --md-allgenres=True --download-format mp3 --download-quality very_high --print-downloads=True
+zotify "$@" --output "{artist}-{song_name}.{ext}" --root-path . --md-allgenres=True --download-format mp3 --download-quality very_high --print-downloads=True
+status=$?
+# Zotify leaves an empty zotify_*.log in the download folder unless debug is on
+find . -maxdepth 1 -name 'zotify_*.log' -empty -delete
+exit $status
 EOF
 
 sudo chmod +x /usr/local/bin/chorear
